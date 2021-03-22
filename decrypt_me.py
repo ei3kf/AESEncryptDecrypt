@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("file", help="The filename to decrypt.")
-    parser.add_argument("--key", help="The encrpytion key.")
+    parser.add_argument("--key", help="The decryption key.")
     args = parser.parse_args()
 
     DecryptMe(args).run()
