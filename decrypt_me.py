@@ -16,12 +16,8 @@ class DecryptMe(object):
     def __init__(self, args):
         self.args = args
         self.ENCRYPTION_KEY = self.args.key
-        self.KEY_SIZE = 32  # bytes
-        self.BLOCK_SIZE = 16  # bytes
         self.CHUNK_SIZE = 1 * 1024 * 1024 * 1024  # 1024Mb in bytes
-        self.STREAM_BUFSIZE = self.CHUNK_SIZE * 4
-
-
+        
     def decrypt_file(self, in_filename):
         key = self.ENCRYPTION_KEY
         chunksize = self.CHUNK_SIZE
