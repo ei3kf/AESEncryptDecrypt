@@ -17,10 +17,8 @@ class EncryptMe(object):
     def __init__(self, args):
         self.args = args
         self.ENCRYPTION_KEY = self.args.key
-        self.KEY_SIZE = 32  # bytes
-        self.BLOCK_SIZE = 16  # bytes
         self.CHUNK_SIZE = 1 * 1024 * 1024 * 1024  # 1024Mb in bytes
-        self.STREAM_BUFSIZE = self.CHUNK_SIZE * 4
+
 
 
     def encrypt_file(self, in_filename):
@@ -69,7 +67,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("file", help="The filename to encrypt.")
-    parser.add_argument("--key", help="The encrpytion key.")
+    parser.add_argument("--key", help="The encryption key.")
     args = parser.parse_args()
 
     EncryptMe(args).run()
