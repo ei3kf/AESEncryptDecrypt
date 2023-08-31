@@ -12,7 +12,6 @@ import struct
 from Crypto.Cipher import AES
 import glob
 
-
 class EncryptMe(object):
     def __init__(self, args):
         self.args = args
@@ -20,13 +19,12 @@ class EncryptMe(object):
         self.CHUNK_SIZE = 1 * 1024 * 1024 * 1024  # 1024Mb in bytes
 
 
-
     def encrypt_file(self, in_filename):
         key = self.ENCRYPTION_KEY
         chunksize = self.CHUNK_SIZE
         out_filename = in_filename + ".encrypted"
         iv = os.urandom(16)
-        encryptor = AES.new(key, AES.MODE_CBC, iv)
+        encryptor = AES.new(key, AES.MODE_GCM, iv)
         filesize = os.path.getsize(in_filename)
 
         with open(in_filename, 'rb') as infile:

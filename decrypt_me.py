@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 '''
 For AmazonLinux 2.0 - pre-requisites:
 yum -y install python3 python3-devel
@@ -27,7 +28,7 @@ class DecryptMe(object):
             logging.info("decrypt_file: I am trying to decrypt " + in_filename)
             origsize = struct.unpack('<Q', infile.read(struct.calcsize('Q')))[0]
             iv = infile.read(16)
-            decryptor = AES.new(key, AES.MODE_CBC, iv)
+            decryptor = AES.new(key, AES.MODE_GCM, iv)
 
             with open(out_filename, 'wb') as outfile:
                 while True:
@@ -65,5 +66,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     DecryptMe(args).run()
-
-   
